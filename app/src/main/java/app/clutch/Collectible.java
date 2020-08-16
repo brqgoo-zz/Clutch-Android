@@ -3,12 +3,10 @@ package app.clutch;
 public class Collectible {
     private String name;
     private String imageUrl;
-    private String imageHexStr;
 
-    public Collectible (String name, String imageUrl, String imageHexStr){
+    public Collectible (String name, String imageUrl){
         this.name = name;
         this.imageUrl = imageUrl;
-        this.imageHexStr = imageHexStr;
     }
 
     public String getName() {
@@ -19,10 +17,6 @@ public class Collectible {
         return imageUrl;
     }
 
-    public String imageHexStr() {
-        return imageHexStr;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -31,16 +25,11 @@ public class Collectible {
         this.imageUrl = imageUrl;
     }
 
-    public void setImageHexStr(String imageHexStr) {
-        this.imageHexStr = imageHexStr;
-    }
-
     @Override
     public String toString() {
         return "Collectible{" +
                 "name='" + name + '\'' +
                 ", imageUrl='" + imageUrl + '\'' +
-                ", imageHexStr='" + imageHexStr + '\'' +
                 '}';
     }
 }

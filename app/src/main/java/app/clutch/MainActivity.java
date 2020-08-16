@@ -40,7 +40,8 @@ import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private RecyclerView collectiblesRecView;
+    public RecyclerView collectiblesRecView;
+    CollectiblesRecViewAdapter adapter;
     ArrayList<Collectible> arrayList;
     FileOutputStream fOut;
     FileInputStream fin;
@@ -66,35 +67,22 @@ public class MainActivity extends AppCompatActivity {
 
         fetchCollectibles();
         resetAdapter();
-
-
-
-
     }
 
     public void cliccked (){
         Toast.makeText(context, "wasdd", Toast.LENGTH_SHORT).show();
 
-        ImageView imagex = findViewById(R.id.imagex);
-
-        Glide.with(context)
-                .load("https://www.pngkit.com/png/detail/3-39021_red-red-car-png-cartoon.png")
-                .listener(listener)
-                .submit();
-
-
-
-
-
+        arrayList.add(new Collectible("sddsaddsad","https://w7.pngwing.com/pngs/910/638/png-transparent-logo-nba-tv-sport-nba.png"));
+        saveCollectible();
+        resetAdapter();
 
     }
 
     public void resetAdapter(){
-        CollectiblesRecViewAdapter adapter = new CollectiblesRecViewAdapter(this);
+        adapter = new CollectiblesRecViewAdapter(context);
         adapter.setCollectibles(arrayList);
-
         collectiblesRecView.setAdapter(adapter);
-        collectiblesRecView.setLayoutManager(new GridLayoutManager(this, 2));
+        collectiblesRecView.setLayoutManager(new GridLayoutManager(context, 2));
     }
 
     public void fetchCollectibles(){
@@ -132,19 +120,20 @@ public class MainActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                arrayList.add(new Collectible(element.split("name='")[1].split("'")[0],element.split("imageUrl='")[1].split("'")[0],element.split("imageHexStr='")[1].split("'")[0]));
+                arrayList.add(new Collectible(element.split("name='")[1].split("'")[0],element.split("imageUrl='")[1].split("'")[0]));
+
             }
+
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        System.out.println(" arrayList lenghtis " + arrayList.size());
     }
 
-    public void addCollectible (String name, String imageUrl, String imageHexStr){
-        //Collectibles ArrayList
-        arrayList.add(new Collectible(name,imageUrl,imageHexStr));
+    public void saveCollectible (){
 
+        System.out.println(" addcolelctiblebas ");
+        //Collectibles ArrayList
         //Collectibles ArrayList as ByteArray
         byte[] CollectiblesArrayListBytes = null;
 
@@ -167,11 +156,14 @@ public class MainActivity extends AppCompatActivity {
             fOut = openFileOutput("collectibles",Context.MODE_PRIVATE);
             fOut.write(CollectiblesArrayListBytes);
             fOut.close();
+            System.out.println(" addcolelctiblesucc ");
         } catch (IOException e) {
             e.printStackTrace();
         }
 
+        System.out.println(" addcolelctiblesuc 1 s " + arrayList.size());
     }
+
 
     public static byte[] hexStringToByteArray(String s) {
         int len = s.length();
@@ -182,33 +174,6 @@ public class MainActivity extends AppCompatActivity {
         }
         return data;
     }
-
-    private RequestListener listener = new RequestListener() {
-
-        @Override
-        public boolean onLoadFailed(@Nullable GlideException e, Object model, Target target, boolean isFirstResource) {
-            return false;
-        }
-
-        @Override
-        public boolean onResourceReady(Object resource, Object model, Target target, DataSource dataSource, boolean isFirstResource) {
-
-            Bitmap bitmap = ((BitmapDrawable) resource).getBitmap();
-
-            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-            byte[] byteArray = stream.toByteArray();
-
-            System.out.println("GOOGOGOGOGOGGGO " + byteArrayToHex(byteArray));
-
-            addCollectible("sddsadas","https://media.geeksforgeeks.org/wp-content/uploads/geeksforgeeks-6.png",byteArrayToHex(byteArray));
-
-            fetchCollectibles();
-            resetAdapter();
-
-            return false;
-        }
-    };
 
     public static String byteArrayToHex(byte[] a) {
         StringBuilder sb = new StringBuilder(a.length * 2);
