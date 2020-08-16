@@ -23,6 +23,9 @@ android {
 }
 
 dependencies {
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    implementation "androidx.cardview:cardview:1.0.0"
     implementation ('org.web3j:core:4.6.1')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation 'androidx.appcompat:appcompat:1.2.0'
