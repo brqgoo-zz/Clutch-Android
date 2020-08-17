@@ -5,15 +5,19 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import com.bumptech.glide.request.target.Target;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import java.io.ByteArrayInputStream;
 import com.bumptech.glide.load.DataSource;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.graphics.drawable.BitmapDrawable;
@@ -33,6 +37,7 @@ import java.io.FileNotFoundException;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -41,6 +46,7 @@ import android.widget.ImageView;
 public class MainActivity extends AppCompatActivity {
 
     public RecyclerView collectiblesRecView;
+    BottomNavigationView bottomNavigationView;
     CollectiblesRecViewAdapter adapter;
     ArrayList<Collectible> arrayList;
     FileOutputStream fOut;
@@ -52,8 +58,35 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        collectiblesRecView = findViewById(R.id.collectiblesRecView);
         context = this;
+
+        bottomNavigationView = findViewById(R.id.bottomnavigation);
+        bottomNavigationView.setSelectedItemId(R.id.home);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.home:
+                        return true;
+                    case R.id.store:
+                        startActivity(new Intent(context, StoreActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.info:
+                        startActivity(new Intent(context, InfoActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                }
+                return false;
+            }
+        });
+
+
+
+
+
+        collectiblesRecView = findViewById(R.id.collectiblesRecView);
+
 
         arrayList = new ArrayList<Collectible>();
 
