@@ -10,7 +10,7 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class InfoActivity extends AppCompatActivity {
+public class NFCActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
     Context context;
@@ -18,14 +18,13 @@ public class InfoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_info);
+        setContentView(R.layout.activity_nfc);
 
-        setTitle("Info");
-
+        setTitle("Add Collectible");
         context = this;
 
         bottomNavigationView = findViewById(R.id.bottomnavigation);
-        bottomNavigationView.setSelectedItemId(R.id.info);
+        bottomNavigationView.setSelectedItemId(R.id.home);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -39,11 +38,17 @@ public class InfoActivity extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.info:
+                        startActivity(new Intent(context, InfoActivity.class));
+                        overridePendingTransition(0,0);
                         return true;
                 }
                 return false;
             }
         });
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
 
     }
 }
