@@ -14,16 +14,22 @@
         app:itemTextColor="@drawable/selector"
         app:itemIconTint="@drawable/selector"
         app:menu="@menu/navigation"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+        app:labelVisibilityMode="unlabeled">
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 
-    <WebView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/storeRecView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/bottomnavigation"
-        android:id="@+id/storeWebView"
-        ></WebView>
+        android:layout_above="@id/bottomnavigation"
+        android:fadingEdge="horizontal"
+        android:fadingEdgeLength="40dp"
+        android:fillViewport="false"
+        android:paddingHorizontal="10dp"
+        android:paddingTop="12dp"
+        android:requiresFadingEdge="vertical"/>
 
 
 </RelativeLayout>

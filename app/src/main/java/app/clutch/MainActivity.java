@@ -33,10 +33,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.DataInputStream;
 import java.io.FileNotFoundException;
-
+import android.view.WindowManager;
 import org.json.JSONException;
 import org.json.JSONObject;
-
+import android.view.Window;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -62,7 +62,12 @@ public class MainActivity extends AppCompatActivity {
 
         setTitle("My Collection");
 
+
+
         context = this;
+
+
+
 
         bottomNavigationView = findViewById(R.id.bottomnavigation);
         bottomNavigationView.setSelectedItemId(R.id.home);

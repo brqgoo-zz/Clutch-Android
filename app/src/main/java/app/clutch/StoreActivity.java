@@ -2,27 +2,37 @@ package app.clutch;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
+import android.view.Window;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.ArrayList;
 
 public class StoreActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
     Context context;
-    WebView storeWebView;
+    public RecyclerView storeRecView;
+    StoreRecViewAdapter adapter;
+    ArrayList<StoreItem> arrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_store);
+
 
         setTitle("Store");
 
@@ -49,23 +59,46 @@ public class StoreActivity extends AppCompatActivity {
             }
         });
 
-        storeWebView = findViewById(R.id.storeWebView);
-        storeWebView.setWebViewClient(new WebViewClient());
-        storeWebView.loadUrl("https://shop.warriors.com/golden-state-warriors-men/t-14145130+ga-67+z-978556-2897172570");
 
-        WebSettings webSettings = storeWebView.getSettings();
-        webSettings.setJavaScriptEnabled(true);
+
+
+
+        storeRecView = findViewById(R.id.storeRecView);
+
+
+        arrayList = new ArrayList<StoreItem>();
+
+
+
+        arrayList.add(new StoreItem("asasdsd","https://i.hizliresim.com/QvKhrV.png"));
+        arrayList.add(new StoreItem("asasdsd","https://i.hizliresim.com/QvKhrV.png"));
+        arrayList.add(new StoreItem("asasdsd","https://i.hizliresim.com/QvKhrV.png"));
+        arrayList.add(new StoreItem("asasdsd","https://i.hizliresim.com/QvKhrV.png"));
+
+
+        resetAdapter();
+
+
 
 
     }
 
-    @Override
-    public void onBackPressed() {
-        if (storeWebView.canGoBack()){
-            storeWebView.goBack();
-        }
-        else {
-            super.onBackPressed();
-        }
+    public void resetAdapter(){
+        adapter = new StoreRecViewAdapter(context);
+        adapter.setCollectibles(arrayList);
+        storeRecView.setAdapter(adapter);
+
+        GridLayoutManager layoutManager = new GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false);
+        layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+            @Override
+            public int getSpanSize(int position) {
+                return position == 0 ? 2 : 1;//put your condition here
+            }
+        });
+        storeRecView.setLayoutManager(layoutManager);
+
+
+        //storeRecView.setLayoutManager(new GridLayoutManager(context, 2));
     }
+
 }
