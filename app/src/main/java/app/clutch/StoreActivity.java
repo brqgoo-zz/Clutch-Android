@@ -70,10 +70,11 @@ public class StoreActivity extends AppCompatActivity {
 
 
 
-        arrayList.add(new StoreItem("asasdsd","https://i.hizliresim.com/QvKhrV.png"));
-        arrayList.add(new StoreItem("asasdsd","https://i.hizliresim.com/QvKhrV.png"));
-        arrayList.add(new StoreItem("asasdsd","https://i.hizliresim.com/QvKhrV.png"));
-        arrayList.add(new StoreItem("asasdsd","https://i.hizliresim.com/QvKhrV.png"));
+        arrayList.add(new StoreItem("asasdsd","https://i.hizliresim.com/QvKhrV.png","123","USD"));
+        arrayList.add(new StoreItem("asasdsd","https://i.hizliresim.com/QvKhrV.png","123","USD"));
+        arrayList.add(new StoreItem("asasdsd","https://i.hizliresim.com/QvKhrV.png","123","USD"));
+        arrayList.add(new StoreItem("asasdsd","https://i.hizliresim.com/QvKhrV.png","123","USD"));
+        arrayList.add(new StoreItem("asasdsd","https://i.hizliresim.com/QvKhrV.png","123","USD"));
 
 
         resetAdapter();

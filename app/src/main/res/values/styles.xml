@@ -10,6 +10,7 @@
 
     <style name="CustomToolBarStyle" parent="@style/Widget.AppCompat.Toolbar">
         <item name="titleTextColor">#000000</item>
+        <item name="android:textColorSecondary">#000000</item>
     </style>
 
 </resources>

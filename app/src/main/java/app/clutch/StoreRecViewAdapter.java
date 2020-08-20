@@ -1,6 +1,7 @@
 package app.clutch;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,20 +41,23 @@ public class StoreRecViewAdapter extends RecyclerView.Adapter<StoreRecViewAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
-        holder.txtItemName.setText(storeItems.get(position).getName());
+    public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
+        holder.txtItemPrice.setText(storeItems.get(position).getPrice());
         holder.parent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                context.startActivity(new Intent(context, StoreItemActivity.class).putExtra("itemID",holder.txtItemTitle.getText()));
                 Toast.makeText(context, storeItems.get(position).getImageUrl() + " seelected", Toast.LENGTH_SHORT).show();
             }
         });
 
         if (position == 0) {
             holder.txtItemTitle.setTextSize(23);
+            holder.txtItemPrice.setTextSize(20);
         }
         else {
             holder.txtItemTitle.setTextSize(15);
+            holder.txtItemPrice.setTextSize(13);
         }
 
 
@@ -79,7 +83,7 @@ public class StoreRecViewAdapter extends RecyclerView.Adapter<StoreRecViewAdapte
 
     public  class ViewHolder extends RecyclerView.ViewHolder{
 
-        private TextView txtItemName, txtItemTitle;
+        private TextView txtItemPrice, txtItemTitle;
         private CardView parent;
         private ImageView image;
 
@@ -87,7 +91,7 @@ public class StoreRecViewAdapter extends RecyclerView.Adapter<StoreRecViewAdapte
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             txtItemTitle = itemView.findViewById(R.id.txtItemTitle);
-            txtItemName = itemView.findViewById(R.id.txtItemName);
+            txtItemPrice = itemView.findViewById(R.id.txtItemPrice);
             parent = itemView.findViewById(R.id.parent);
             image = itemView.findViewById(R.id.image);
 
