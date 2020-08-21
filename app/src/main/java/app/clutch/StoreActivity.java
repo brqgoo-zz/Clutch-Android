@@ -70,11 +70,11 @@ public class StoreActivity extends AppCompatActivity {
 
 
 
-        arrayList.add(new StoreItem("asasdsd","https://i.hizliresim.com/QvKhrV.png","123","USD"));
-        arrayList.add(new StoreItem("asasdsd","https://i.hizliresim.com/QvKhrV.png","123","USD"));
-        arrayList.add(new StoreItem("asasdsd","https://i.hizliresim.com/QvKhrV.png","123","USD"));
-        arrayList.add(new StoreItem("asasdsd","https://i.hizliresim.com/QvKhrV.png","123","USD"));
-        arrayList.add(new StoreItem("asasdsd","https://i.hizliresim.com/QvKhrV.png","123","USD"));
+        arrayList.add(new StoreItem("Nike x Travis Scott","https://i.hizliresim.com/QvKhrV.png","123","USD"));
+        arrayList.add(new StoreItem("Kevin Durant Golden State Warriors","https://i.hizliresim.com/tLoRul.png","123","USD"));
+        arrayList.add(new StoreItem("B&O Gold Style Limited","https://i.hizliresim.com/Tj13k5.png","123","USD"));
+        arrayList.add(new StoreItem("Beosound limited Edition","https://i.hizliresim.com/bvp1P6.png","123","USD"));
+        arrayList.add(new StoreItem("Privacy Lounge Chair","https://i.hizliresim.com/m2nw3Z.png","123","USD"));
 
 
         resetAdapter();

@@ -43,10 +43,11 @@ public class StoreRecViewAdapter extends RecyclerView.Adapter<StoreRecViewAdapte
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
         holder.txtItemPrice.setText(storeItems.get(position).getPrice());
+        holder.txtItemTitle.setText(storeItems.get(position).getName());
         holder.parent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                context.startActivity(new Intent(context, StoreItemActivity.class).putExtra("itemID",holder.txtItemTitle.getText()));
+                context.startActivity(new Intent(context, StoreItemActivity.class).putExtra("itemName",holder.txtItemTitle.getText()).putExtra("itemImageURL",storeItems.get(position).getImageUrl()));
                 Toast.makeText(context, storeItems.get(position).getImageUrl() + " seelected", Toast.LENGTH_SHORT).show();
             }
         });
@@ -86,6 +87,7 @@ public class StoreRecViewAdapter extends RecyclerView.Adapter<StoreRecViewAdapte
         private TextView txtItemPrice, txtItemTitle;
         private CardView parent;
         private ImageView image;
+        private String ImageViewURL;
 
 
         public ViewHolder(@NonNull View itemView) {

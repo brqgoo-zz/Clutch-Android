@@ -9,41 +9,33 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.graphics.drawable.Drawable;
 import android.graphics.PorterDuff;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 import android.os.StrictMode;
+import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
-import com.smarteist.autoimageslider.SliderAnimations;
-import com.smarteist.autoimageslider.SliderView;
+import com.smarteist.autoimageslider.SliderLayout;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.util.ArrayList;
-import java.util.List;
-import java.net.URL;
-import java.net.URLConnection;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
-import okhttp3.RequestBody;
-import okhttp3.FormBody;
-import okhttp3.MultipartBody;
 import okhttp3.HttpUrl;
 
 public class StoreItemActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
     Context context;
-    SliderView sliderView;
+    ImageView storeItemImageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_nfc);
+        setContentView(R.layout.activity_store_item);
 
         Intent myIntent = getIntent(); // gets the previously created intent
-        String firstKeyName = myIntent.getStringExtra("itemID");
+        String firstKeyName = myIntent.getStringExtra("itemName");
 
         setTitle(firstKeyName);
         context = this;
@@ -76,7 +68,7 @@ public class StoreItemActivity extends AppCompatActivity {
         upArrow.setColorFilter(getResources().getColor(R.color.colorBlack), PorterDuff.Mode.SRC_ATOP);
         getSupportActionBar().setHomeAsUpIndicator(upArrow);
 
-        sliderView = findViewById(R.id.imageSlider);
+
 
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -107,7 +99,18 @@ public class StoreItemActivity extends AppCompatActivity {
         }
 
 
+        storeItemImageView = findViewById(R.id.storeItemImageView);
+
+        Glide.with(context)
+                .asBitmap()
+                .load(myIntent.getStringExtra("itemImageURL"))
+                .into(storeItemImageView);
+
+
+
     }
+
+
 
 //System.out.println(" tx sewn satatus: " + "succeed");
 
