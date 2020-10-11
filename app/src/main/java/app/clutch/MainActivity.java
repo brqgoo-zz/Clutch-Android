@@ -11,6 +11,7 @@ import com.bumptech.glide.request.target.Target;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 
@@ -21,6 +22,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.graphics.drawable.BitmapDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -55,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
     FileInputStream fin;
     Context context;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,8 +69,8 @@ public class MainActivity extends AppCompatActivity {
 
         context = this;
 
-
-
+        //String privateKey = AESUtils.decrypt("nFjkYOYvdNs/mQZs3lA4TepgEvsyF0uorBbBTeCSTfmgUGVBxc3hqP2zd/+Z8L0YtRmlPCMk5SzEBaIoBVd2X2kyOur5ziXVXwDMMwdTVOA=", "742714");
+        // System.out.println("decryptPrivateKey:" + privateKey);
 
 
 

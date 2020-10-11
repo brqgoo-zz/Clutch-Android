@@ -6,23 +6,51 @@
     android:layout_height="match_parent"
     tools:context=".StoreItemActivity">
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomnavigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:itemBackground="@color/colorPrimary"
-        app:itemTextColor="@drawable/selector"
-        app:itemIconTint="@drawable/selector"
-        app:menu="@menu/navigation"
-        android:layout_alignParentBottom="true"
-        app:labelVisibilityMode="unlabeled">
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/storeItemImageView"
-        android:padding="50dp"/>
+        android:paddingHorizontal="70dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="here is no scarier and highly sought after sneaker than these Freddy Krueger Dunk SB's. Created in 2007, the design is modeled after it’s namesake..."
+        android:paddingHorizontal="40dp"
+        android:textSize="14dp"
+        android:layout_below="@+id/storeItemImageView"/>
+
+    <ImageButton
+        android:layout_width="100dp"
+        android:layout_height="64dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:scaleType="centerCrop"
+        android:cropToPadding="false"
+        android:background="@drawable/buy_button"
+        android:src="@drawable/buy_button"
+        android:id="@+id/buyButton"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginStart="20dp"
+        android:textSize="18dp"
+        android:layout_alignBaseline="@+id/buyButton"
+        android:layout_centerVertical="true"
+        android:text="100 USD"
+        android:id="@+id/priceText"/>
+
+
+
 
 
 </RelativeLayout>
